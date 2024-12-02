@@ -1,0 +1,36 @@
+{
+  "name": "immich-solid",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "fmt": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,md}\""
+  },
+  "dependencies": {
+    "@felte/solid": "^1.2.14",
+    "@immich/sdk": "^1.121.0",
+    "@solidjs/router": "^0.15.1",
+    "dayjs": "^1.11.13",
+    "js-cookie": "^3.0.5",
+    "motion": "^11.12.0",
+    "solid-icons": "^1.1.0",
+    "solid-js": "^1.9.3"
+  },
+  "devDependencies": {
+    "@types/js-cookie": "^3.0.6",
+    "autoprefixer": "^10.4.20",
+    "daisyui": "^4.12.14",
+    "postcss": "^8.4.49",
+    "postcss-nesting": "^13.0.1",
+    "prettier": "^3.4.1",
+    "prettier-plugin-tailwindcss": "^0.6.9",
+    "tailwindcss": "^3.4.15",
+    "typescript": "~5.6.2",
+    "vite": "^6.0.1",
+    "vite-plugin-solid": "^2.11.0"
+  },
+  "packageManager": "pnpm@9.14.4+sha512.c8180b3fbe4e4bca02c94234717896b5529740a6cbadf19fa78254270403ea2f27d4e1d46a08a0f56c89b63dc8ebfd3ee53326da720273794e6200fcf0d184ab"
+}
