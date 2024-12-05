@@ -2,6 +2,7 @@ import { AssetOrder, getTimeBucket, TimeBucketSize } from "@immich/sdk";
 import { createResource, createSignal, onMount } from "solid-js";
 import dayjs from "dayjs";
 import { inView } from "motion";
+import { useNavigate } from "@solidjs/router";
 
 interface TimeBucketOptions {
   albumId?: string;
@@ -26,6 +27,8 @@ const TimeBucket = ({
   timeBucketOptions: TimeBucketOptions;
   count: number;
 }) => {
+  const navigate = useNavigate();
+
   let el!: HTMLDivElement;
 
   const [isInView, setIsInView] = createSignal(false);
@@ -55,7 +58,12 @@ const TimeBucket = ({
           ))}
         {bucket() &&
           bucket()?.map((photo) => (
-            <div class={"cursor-pointer"}>
+            <div
+              class={"cursor-pointer"}
+              onClick={() => {
+                navigate(`./photos/${photo.id}`);
+              }}
+            >
               <img
                 class={"aspect-square w-full rounded object-cover"}
                 src={`/api/assets/${photo.id}/thumbnail?size=thumbnail&c=${photo.checksum}`}

@@ -1,7 +1,6 @@
 /* @refresh reload */
 import { render } from "solid-js/web";
 import "./index.css";
-// import App from './App.tsx'
 import { Route, Router } from "@solidjs/router";
 import Library from "./components/Library.tsx";
 import Albums from "./components/Albums.tsx";
@@ -25,9 +24,17 @@ render(
         <Route component={Layout}>
           <Route path={"about"} component={() => <h1>123</h1>} />
           <Route path={"albums"} component={Albums} />
-          <Route path={"albums/:albumId"} component={Album} />
-          <Route path={""} component={Library} />
+          <Route path={"albums/:albumId"} component={Album}>
+            <Route path={""} />
+            <Route path={"photos/:assetId"} />
+          </Route>
+          <Route path={""} component={Library}>
+            <Route path={""} />
+            <Route path={"photos/:assetId"} />
+          </Route>
         </Route>
+        {/*<Route path={"photos/:assetId"} component={Photo} />*/}
+        {/*<Route path={"albums/:albumId/photos/:assetId"} component={Photo} />*/}
       </Route>
       <Route
         path={"*404"}

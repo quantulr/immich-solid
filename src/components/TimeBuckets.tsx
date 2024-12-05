@@ -2,7 +2,7 @@ import {
   AssetOrder,
   getTimeBuckets,
   TimeBucketResponseDto,
-  TimeBucketSize
+  TimeBucketSize,
 } from "@immich/sdk";
 import { createResource } from "solid-js";
 import TimeBucket from "./TimeBucket.tsx";
@@ -39,25 +39,27 @@ interface BucketOptions {
 }
 
 const TimeBuckets = ({
-                       bucketsOptions,
-                       bucketOptions
-                     }: {
+  bucketsOptions,
+  bucketOptions,
+}: {
   bucketsOptions: BucketsOptions;
   bucketOptions: BucketOptions;
 }) => {
   const [buckets] = createResource(() => getTimeBuckets(bucketsOptions));
   return (
     <>
-      {buckets.loading && <div class={"h-full w-full flex justify-center items-center"}>
-        <div class={"loading loading-infinity loading-lg"}></div>
-      </div>}
+      {buckets.loading && (
+        <div class={"flex h-full w-full items-center justify-center"}>
+          <div class={"loading loading-infinity loading-lg"}></div>
+        </div>
+      )}
       {buckets.error && <div>error</div>}
       {buckets()?.map((bucket: TimeBucketResponseDto) => (
         <TimeBucket
           timeBucketOptions={{
             ...bucketOptions,
             timeBucket: bucket.timeBucket,
-            albumId: bucketsOptions.albumId
+            albumId: bucketsOptions.albumId,
           }}
           count={bucket.count}
         />

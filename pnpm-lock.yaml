@@ -32,6 +32,9 @@ importers:
       solid-js:
         specifier: ^1.9.3
         version: 1.9.3
+      solid-persistent:
+        specifier: ^0.1.0
+        version: 0.1.0(solid-js@1.9.3)
     devDependencies:
       '@types/js-cookie':
         specifier: ^3.0.6
@@ -1043,6 +1046,11 @@ packages:
   solid-js@1.9.3:
     resolution: {integrity: sha512-5ba3taPoZGt9GY3YlsCB24kCg0Lv/rie/HTD4kG6h4daZZz7+yK02xn8Vx8dLYBc9i6Ps5JwAbEiqjmKaLB3Ag==}
 
+  solid-persistent@0.1.0:
+    resolution: {integrity: sha512-cg81SZQVthP1PvMrBxzf422ao0VXhMEJ8K9p/SzkQfr70/pku5IfSjRTLxJQlHWCm+C0R3g7cbeZAPPNoBzTHQ==}
+    peerDependencies:
+      solid-js: ^1.8
+
   solid-refresh@0.6.3:
     resolution: {integrity: sha512-F3aPsX6hVw9ttm5LYlth8Q15x6MlI/J3Dn+o3EQyRTtTxidepSTwAYdozt01/YA+7ObcciagGEyXIopGZzQtbA==}
     peerDependencies:
@@ -2000,6 +2008,10 @@ snapshots:
       csstype: 3.1.3
       seroval: 1.1.1
       seroval-plugins: 1.1.1(seroval@1.1.1)
+
+  solid-persistent@0.1.0(solid-js@1.9.3):
+    dependencies:
+      solid-js: 1.9.3
 
   solid-refresh@0.6.3(solid-js@1.9.3):
     dependencies:
