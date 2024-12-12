@@ -1,7 +1,7 @@
-import logo from "../assets/immich.svg";
+import logo from "@/assets/immich.svg";
 import { getMyUser } from "@immich/sdk";
 import { createResource } from "solid-js";
-import auth from "../store/auth.tsx";
+import auth from "@/store/auth.tsx";
 
 const NavBar = () => {
   const [myUser] = createResource(() => getMyUser());

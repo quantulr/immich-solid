@@ -5,7 +5,10 @@ import {
   TimeBucketSize,
 } from "@immich/sdk";
 import { createResource } from "solid-js";
-import TimeBucket from "./TimeBucket.tsx";
+import TimeBucket from "@/components/TimeBucket.tsx";
+import { Portal } from "solid-js/web";
+import Photo from "@/components/Photo.tsx";
+import { useParams } from "@solidjs/router";
 
 interface BucketsOptions {
   albumId?: string;
@@ -45,6 +48,8 @@ const TimeBuckets = ({
   bucketsOptions: BucketsOptions;
   bucketOptions: BucketOptions;
 }) => {
+  const params = useParams();
+
   const [buckets] = createResource(() => getTimeBuckets(bucketsOptions));
   return (
     <>
@@ -54,6 +59,15 @@ const TimeBuckets = ({
         </div>
       )}
       {buckets.error && <div>error</div>}
+
+      {params.assetId && (
+        <Portal>
+          <div class={"absolute left-0 top-0 z-50 w-screen transition"}>
+            <Photo />
+          </div>
+        </Portal>
+      )}
+
       {buckets()?.map((bucket: TimeBucketResponseDto) => (
         <TimeBucket
           timeBucketOptions={{

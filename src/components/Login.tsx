@@ -1,7 +1,8 @@
 import style from "./Login.module.css";
 import { createSignal } from "solid-js";
+import auth from "@/store/auth.tsx";
 // import { login } from "@immich/sdk";
-import auth from "../store/auth";
+// import auth from "../store/auth";
 
 const Login = () => {
   const [form, setForm] = createSignal<{

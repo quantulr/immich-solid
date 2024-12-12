@@ -1,8 +1,8 @@
-import TimeBuckets from "./TimeBuckets.tsx";
 import { AssetOrder, TimeBucketSize } from "@immich/sdk";
 import { useParams } from "@solidjs/router";
 import { Portal } from "solid-js/web";
-import Photo from "./Photo.tsx";
+import TimeBuckets from "@/components/TimeBuckets.tsx";
+import Photo from "@/components/Photo.tsx";
 
 const Library = () => {
   const params = useParams();

@@ -1,10 +1,23 @@
 import { getAllAlbums } from "@immich/sdk";
-import { createResource } from "solid-js";
-import { useNavigate } from "@solidjs/router";
+import { createEffect, createResource, onCleanup } from "solid-js";
+import savedPosition from "@/store/savedPosition.ts";
 
 const Albums = () => {
   const [albums, {}] = createResource(() => getAllAlbums({}), {});
-  const navigate = useNavigate();
+  const { top, updateTop } = savedPosition;
+
+  let el!: HTMLDivElement;
+
+  createEffect(() => {
+    if (top() && albums()?.length) {
+      el.scrollTo({
+        top: top(),
+      });
+    }
+  });
+  onCleanup(() => {
+    updateTop(el.scrollTop);
+  });
   return (
     <div class={"flex h-full flex-col p-4"}>
       {albums.loading && (
@@ -13,11 +26,12 @@ const Albums = () => {
         </div>
       )}
       {albums() && (
-        <div class={"flex-1 overflow-y-auto"}>
+        <div class={"flex-1 overflow-y-auto"} ref={el}>
           <div class={"grid grid-cols-6 gap-2"}>
             {albums()?.map((album) => (
-              <div
-                onClick={() => navigate(`/albums/${album.id}`)}
+              <a
+                // onClick={() => navigate(`/albums/${album.id}`)}
+                href={`/albums/${album.id}`}
                 class={"cursor-pointer"}
               >
                 <img
@@ -28,7 +42,7 @@ const Albums = () => {
                 <h2 class={"mt-1 truncate text-center font-bold"}>
                   {album.albumName}
                 </h2>
-              </div>
+              </a>
             ))}
           </div>
         </div>

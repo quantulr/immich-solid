@@ -1,5 +1,5 @@
-import SideMenu from "./SideMenu.tsx";
-import NavBar from "./NavBar.tsx";
+import NavBar from "@/components/NavBar.tsx";
+import SideMenu from "@/components/SideMenu.tsx";
 
 const Layout = (props: any) => {
   return (

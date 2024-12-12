@@ -1,7 +1,7 @@
 import { createEffect } from "solid-js";
 // import cookie from "js-cookie";
 import { useNavigate } from "@solidjs/router";
-import auth from "../store/auth";
+import auth from "@/store/auth";
 
 const UnAuth = (props: any) => {
   const navigate = useNavigate();

@@ -2,9 +2,7 @@ import { useParams } from "@solidjs/router";
 import { AssetOrder, getAlbumInfo, TimeBucketSize } from "@immich/sdk";
 import { createResource } from "solid-js";
 import dayjs from "dayjs";
-import TimeBuckets from "./TimeBuckets.tsx";
-import Photo from "./Photo.tsx";
-import { Portal } from "solid-js/web";
+import TimeBuckets from "@/components/TimeBuckets.tsx";
 
 const Album = () => {
   const params = useParams();
@@ -17,13 +15,13 @@ const Album = () => {
 
   return (
     <>
-      {params.assetId && (
+      {/*      {params.assetId && (
         <Portal>
           <div class={"absolute left-0 top-0 w-screen transition"}>
             <Photo />
           </div>
         </Portal>
-      )}
+      )}*/}
       <div class={"flex h-full flex-col p-4"}>
         {albumInfo() && (
           <div>

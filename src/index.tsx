@@ -9,6 +9,9 @@ import RequiredAuth from "./components/RequiredAuth.tsx";
 import Album from "./components/Album.tsx";
 import Layout from "./components/Layout.tsx";
 import UnAuth from "./components/UnAuth.tsx";
+import { attachDevtoolsOverlay } from "@solid-devtools/overlay";
+
+attachDevtoolsOverlay();
 
 const root = document.getElementById("root");
 
