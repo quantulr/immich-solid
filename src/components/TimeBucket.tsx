@@ -1,4 +1,9 @@
-import { AssetOrder, getTimeBucket, TimeBucketSize } from "@immich/sdk";
+import {
+  AssetOrder,
+  getAssetInfo,
+  getTimeBucket,
+  TimeBucketSize,
+} from "@immich/sdk";
 import { createEffect, createResource, createSignal, onMount } from "solid-js";
 import dayjs from "dayjs";
 import { inView } from "motion";
@@ -128,11 +133,20 @@ const TimeBucket = ({
                   class={
                     "absolute left-1 top-1 z-40 flex items-center rounded bg-white bg-opacity-50 px-1 py-0.5"
                   }
-                  onMouseOver={() => {
+                  onMouseOver={async () => {
                     console.log("开始播放live");
                     // setLivePhotoPlaying(true);
-                    if (photo.livePhotoVideoId)
+                    if (photo.livePhotoVideoId) {
+                      const asset = await getAssetInfo({
+                        id: photo.livePhotoVideoId,
+                      });
+                      console.log(
+                        asset.exifInfo?.exifImageHeight,
+                        asset.exifInfo?.exifImageWidth,
+                        asset.exifInfo?.orientation,
+                      );
                       setPlayingLivePhotoId(photo.livePhotoVideoId);
+                    }
                   }}
                   onMouseLeave={() => {
                     console.log("停止播放live");
